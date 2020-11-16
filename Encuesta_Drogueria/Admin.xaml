@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Encuesta_Drogueria.Page1">
+    <ContentPage.Content Orientation="Horizontal">
+     
+        <StackLayout>
+            
+          
+            <Label Text="Productos"/>
+           <!--campos que almacenan los datos-->
+
+            <Label x:Name="ids" Text="" IsVisible="False"   />
+            <Label x:Name="ids1" Text="" IsVisible="False"  />
+            <Label x:Name="ids2" Text="" IsVisible="False"  />
+            <Label x:Name="ids3" Text="" IsVisible="False"  />
+            <Label x:Name="ids4" Text="" IsVisible="False"  />
+            
+            <!--lista para ordenar los datos -->
+            <ListView x:Name="TblUsuario" HasUnevenRows="True" Refreshing="UList_Refreshing"
+                            IsPullToRefreshEnabled="True"   >
+                
+                <ListView.ItemTemplate >
+                    <DataTemplate>
+
+                        <!--Items seleccionados-->
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem x:Name="valor1" Text="Editar" Clicked="MenuItem_Clicked" IsDestructive="True" CommandParameter="{Binding}"></MenuItem>
+                                <MenuItem Text="Borrar" Clicked="MenuItem_Clicked2" IsDestructive="True" CommandParameter="{Binding id_prod_pharmapp}"></MenuItem>
+                                
+
+                            </ViewCell.ContextActions>
+                            <!--Información de los productos-->
+                            <StackLayout Spacing="2" x:Name="layout1">
+                                <Label x:Name="lblProducto" TextColor="Black" Text="{Binding nom_prod_pharmapp, StringFormat='Nombre Producto : {0:F0}'}" FontSize="Medium" FontAttributes="Bold"></Label>
+                                <Label x:Name="lblPrecio" TextColor="Black" Text="{Binding stock_prod_pharmapp, StringFormat='Stock: {0:F0}'}" FontSize="Small" FontAttributes="None"></Label>
+                                <Label x:Name="lblCantidad" TextColor="Black" Text="{Binding prec_prod_pharmapp, StringFormat='Precio: {0:F0}'}" FontSize="Small" FontAttributes="None"></Label>
+                                <Label x:Name="lblDescripcion" TextColor="Black" Text="{Binding det_prod_pharmapp, StringFormat='Descripción: {0:F0}'}" FontSize="Small" FontAttributes="None"></Label>
+
+                                <!--Enytry para editar los campos de productos-->
+                                <Entry x:Name="txtProducto" Text="{Binding nom_prod_pharmapp }" ></Entry>
+                                <Entry x:Name="txtPrecio" Text="{Binding stock_prod_pharmapp }"  ></Entry>
+                                <Entry x:Name="txtCantidad" Text="{Binding prec_prod_pharmapp }"  ></Entry>
+                                <Entry x:Name="txtDescripcion" Text="{Binding det_prod_pharmapp }"  ></Entry>
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!---->
+            <Button Clicked="BtnAgregar" BackgroundColor="Aqua" Text="Agregar"></Button>
+            
+
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

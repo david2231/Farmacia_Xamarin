@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Encuesta_Drogueria.Login">
+    
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center">
+            <Image Source="descarga.jpg" WidthRequest="300" HeightRequest="200"/>
+            <!--Usuario y pass-->
+         
+            <Label IsVisible="False" />
+            <Label IsVisible="False" />
+            <!--Entrada de texto usuario-->
+            <Entry x:Name="txtUsuario" Placeholder="Ingrese Usuario"></Entry>
+            <Label x:Name="usuarioss" Text="{Binding usuario}"  >
+            </Label>
+           
+            <!--Contraseña-->
+            
+            <Entry x:Name="txtContra"   Placeholder="Ingrese Contraseña" IsPassword="True" ></Entry>
+            <!--Registrar-->
+
+            <Button VerticalOptions="End"   BackgroundColor="Transparent" HeightRequest="100" Text="¿Aún no estas registrado?" TextColor="Blue" Clicked="BtnRegistro"  BorderRadius="5"></Button>
+            <!--Boton enviar-->
+            <Button VerticalOptions="End"   BackgroundColor="OrangeRed" HeightRequest="100" Text="Ingresar" Clicked="BtnEnviarUsuario"  BorderRadius="5"></Button>
+           
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

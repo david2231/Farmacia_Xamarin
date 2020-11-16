@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Encuesta_Drogueria"
+             x:Class="Encuesta_Drogueria.MainPage">
+
+    <ScrollView>
+        
+        <StackLayout>
+            <Image Source="descarga.jpg" WidthRequest="200" HeightRequest="150"/>
+            
+            <Label Text="PHARMAPP"  FontSize="Medium" TextColor="Aqua" />
+
+            <!--Switch que envia un dato SI o NO-->
+            
+
+            <Label Text="Ingrese sus Nombres"></Label>
+            <Entry x:Name="EntryName" Placeholder="Ingresar nombres y apellidos" />
+
+            <Label Text="Ingrese sus Apellidos"></Label>
+            <Entry x:Name="EntryApll" Placeholder="Ingresar nombres y apellidos"  IsTextPredictionEnabled="true" />
+
+            <Label Text="Ingrese Cedula" />
+            <Entry x:Name="EntryCedula" Placeholder="Ingresar Cedula"  Keyboard="Numeric"/>
+
+            <Label Text="Seleccione su Fecha de nacimiento" />
+            <DatePicker x:Name="Fecha" DateSelected="SeleecionFecha"/>
+            <Label x:Name="detalles" IsVisible="False"  />
+            
+
+            <Label Text="Seleccione su edad" />
+            <Slider x:Name="SliderEdad" Minimum="0" Maximum="100"  ValueChanged="Edadd" ></Slider>
+            <Label x:Name="Edades"  />
+
+            <Label Text="Seleccione los medicamentos que mas compra" />
+            <Picker  x:Name="PickerMed"  Title="Seleccion medicamentos" SelectedIndexChanged="PickerMed_SelectedIndexChanged">
+
+            </Picker>
+
+
+            <Label Text="Seleccione en las siguientes opciones las enfermedades con las que ha padecido  frecuentemente"  />
+            <Picker x:Name="PickerEfm"  Title="Seleccione enfermedades" SelectedIndexChanged="PickerMed_SelectedIndexChanged1" />
+
+            <StackLayout>
+                <!--Switch que envia un dato SI o NO-->
+                <Label Text="¿Le gustaria recibir nuestro boletin informativo?"
+                           HorizontalOptions="Start" FontAttributes="Bold" Font="15" TextColor="Black"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Switch x:Name="switchBoletin"
+                                HorizontalOptions="Start"
+                                VerticalOptions="CenterAndExpand" />
+                    <Label x:Name="Boletin" Text="No"
+                                HorizontalOptions="Start"
+                                VerticalOptions="CenterAndExpand"
+                                TextColor="Blue">
+                        <Label.Triggers>
+                            <DataTrigger TargetType="Label"
+                             Binding="{Binding Source={x:Reference switchBoletin},
+                                               Path=IsToggled}"
+                             Value="True">
+                                <Setter Property="Text" Value="Si" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+            
+            <Label Text="¿Usted usario la aplicación de Pharmapp?"
+                           HorizontalOptions="Start" FontAttributes="Bold" Font="15" TextColor="Black"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Switch x:Name="switchBoletinapp"
+                                HorizontalOptions="Start"
+                                VerticalOptions="CenterAndExpand" />
+                <Label x:Name="App" Text="No"
+                                HorizontalOptions="Start"
+                                VerticalOptions="CenterAndExpand"
+                                TextColor="Blue">
+                    <Label.Triggers>
+                        <DataTrigger TargetType="Label"
+                             Binding="{Binding Source={x:Reference switchBoletinapp},
+                                               Path=IsToggled}"
+                             Value="True">
+                            <Setter Property="Text" Value="Si" />
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+            </StackLayout>
+           
+            <Label Text="Dejenos sus comentarios" />
+            <Entry x:Name="EntryComentario" Placeholder="Comentarios" />
+
+            <Label Text="De 1 a 5 qué tan útil cree usted que sería comprar medicamentos por medio una de aplicación, escoge" />
+            <Picker  x:Name="Pickerapp"  Title="" SelectedIndexChanged="PickerMed_SelectedIndexChangedApp">
+
+            </Picker>
+
+           
+
+
+            <Button Text="Enviar" Clicked="BtnEnviar"></Button>
+
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
